@@ -33,7 +33,7 @@ namespace CS321_W3D2_BookAPI.Services
             {
                 return author;
             }
-            throw new Exception("Author Not Found");
+            return null;
         }
 
         public IEnumerable<Author> GetAll()
@@ -46,6 +46,7 @@ namespace CS321_W3D2_BookAPI.Services
         public void Remove(Author removeAuthor)
         {
             _bookContext.Remove(removeAuthor);
+            _bookContext.SaveChanges();
         }
 
         public Author Update(Author updateAuthor)
@@ -60,7 +61,7 @@ namespace CS321_W3D2_BookAPI.Services
                 _bookContext.SaveChanges();
                 return author;
             }
-            throw new Exception("Cannot update Author!");
+            return null;
         }
     }
 }
